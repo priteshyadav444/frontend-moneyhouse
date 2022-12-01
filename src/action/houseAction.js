@@ -24,6 +24,7 @@ import { returnErrors } from "./errorAction";
 //func > getHOUSE
 //desc > get all HOUSE
 //roure > /HOUSE
+const apiUrl = "http://localhost:4444"
 export const getHouse = (data) => (dispatch, getState) => {
   dispatch(setHouseLoading());
   var id = null;
@@ -37,7 +38,7 @@ export const getHouse = (data) => (dispatch, getState) => {
     },
   };
   axios
-    .get("/api/house", config)
+    .get(`${apiUrl}/api/house`, config)
     .then((res) =>
       dispatch({
         type: GET_HOUSE,
@@ -66,7 +67,7 @@ export const getHouseMember = (data) => (dispatch, getState) => {
     config.headers["x-auth-token"] = token;
   }
   axios
-    .get("/api/house/housemember", config)
+    .get(`${apiUrl}/api/house/housemember`, config)
     .then((res) =>
       dispatch({
         type: GET_HOUSE_MEMBER,
@@ -87,7 +88,7 @@ export const getHouseMember = (data) => (dispatch, getState) => {
 export const addHouse = (house) => (dispatch) => {
   dispatch(setHouseAdding());
   axios
-    .post("/api/house/add", house)
+    .post(`${apiUrl}/api/house/add`, house)
     .then((res) =>
       dispatch({
         type: ADD_HOUSE,
@@ -132,7 +133,7 @@ export const addMemberToHouse =
     const body = { houseid, housepool, name, entryamount, balance };
 
     axios
-      .post("/api/house/addmember", body, config)
+      .post(`${apiUrl}/api/house/addmember`, body, config)
       .then((res) => {
         dispatch({
           type: UPDATE_MEMBER_HOUSE,
@@ -185,7 +186,7 @@ export const submitBid = (amount, houseid) => (dispatch, getState) => {
   const body = { name, amount, houseid };
 
   axios
-    .post("/api/house/submitbid", body, config)
+    .post(`${apiUrl}/api/house/submitbid`, body, config)
     .then((res) =>
       dispatch({
         type: BID_SUBMITED,
@@ -218,7 +219,7 @@ export const payment =
     const body = { houseid, name, entryamount, balance };
 
     axios
-      .post("/api/house/payment", body, config)
+      .post(`${apiUrl}/api/house/payment`, body, config)
       .then((res) => {
         dispatch({
           type: PAYMENT_DONE,
@@ -255,7 +256,7 @@ export const updateHouseJoined = () => (dispatch, getState) => {
     config.headers["x-auth-token"] = token;
   }
   axios
-    .get("/api/house/update", config)
+    .get(`${apiUrl}/api/house/update`, config)
     .then((res) =>
       dispatch({
         type: UPDATE_JOINED_HOUSES,

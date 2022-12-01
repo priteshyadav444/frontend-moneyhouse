@@ -17,6 +17,8 @@ import {
   ADD_MONEY_REQUESTED,
 } from "./types";
 
+
+const apiUrl = "http://localhost:4444"
 // func > login function
 // require> email password
 // return  > error or success
@@ -26,13 +28,15 @@ export const memberLogin = (body) => (dispatch) => {
   dispatch({ type: ADMIN_LOGOUT_SUCCESS });
 
   const config = {
+    mode: 'no-cors',
     header: {
-      "Content-Type": "application/json",
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
     },
   };
 
   axios
-    .post("/api/member/auth", body, config)
+    .post(`${apiUrl}/api/member/auth`, body, config)
     .then((res) =>
       dispatch({
         type: LOGIN_SUCCESS,
@@ -73,7 +77,7 @@ export const memberRegister = (body) => (dispatch) => {
   };
 
   axios
-    .post("/api/member/", body, config)
+    .post(`${apiUrl}/api/member/`, body, config)
     .then((res) =>
       dispatch({
         type: REGISTER_SUCCESS,
@@ -108,6 +112,8 @@ export const loadMember = () => (dispatch, getState) => {
   const config = {
     headers: {
       "Content-type": "application/json",
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
     },
   };
 
@@ -117,7 +123,7 @@ export const loadMember = () => (dispatch, getState) => {
   }
 
   axios
-    .get("/api/member/auth/load", config)
+    .get(`${apiUrl}/api/member/auth/load`, config)
     .then((res) =>
       dispatch({
         type: MEMBER_LOADED,
@@ -150,7 +156,7 @@ export const notificationLoad = () => (dispatch, getState) => {
   }
 
   axios
-    .get("/api/member/notification/load", config)
+    .get(`${apiUrl}/api/member/notification/load`, config)
     .then((res) =>
       dispatch({
         type: NOTIFICATION_LOAD,
@@ -180,7 +186,7 @@ export const notificationClick = () => (dispatch, getState) => {
   }
 
   axios
-    .get("/api/member/notification/click", config)
+    .get(`${apiUrl}/api/member/notification/click`, config)
     .then((res) =>
       dispatch({
         type: NOTIFICATION_CLICK,
@@ -211,7 +217,7 @@ export const addMoney = (data) => (dispatch, getState) => {
   const body = { membername, ...data };
 
   axios
-    .post("/api/member/addmoney", body, config)
+    .post(`${apiUrl}/api/member/addmoney`, body, config)
     .then((res) => {
       dispatch({
         type: MONEY_ADDED,
@@ -248,7 +254,7 @@ export const addPaytmMoney = (data) => (dispatch, getState) => {
   console.log(body);
   try {
     const data = axios
-      .post("/api/payment", body, config)
+      .post(`${apiUrl}/api/payment`, body, config)
       .then((response) => {
         return response.data;
       })

@@ -36,7 +36,7 @@ export const adminLogin = (body) => (dispatch) => {
   };
 
   axios
-    .post({apiUrl}+"/api/admin/auth", body, config)
+    .post(`${apiUrl}/api/admin/auth`, body, config)
     .then((res) =>
       dispatch({
         type: ADMIN_LOGIN_SUCCESS,
@@ -86,7 +86,7 @@ export const adminRegister = (data) => (dispatch) => {
   };
   const body = data;
   axios
-    .post("/api/admin", body, config)
+    .post(`${apiUrl}/api/admin`, body, config)
     .then((res) => {
       dispatch({ type: LOGOUT_SUCCESS });
       dispatch({
@@ -128,7 +128,7 @@ export const loadAllMemberData = () => (dispatch, getState) => {
   }
 
   axios
-    .get("/api/admin/getmember", config)
+    .get(`${apiUrl}/api/admin/getmember`, config)
     .then((res) =>
       dispatch({
         type: REQUEST_ALL_MEMBER,
@@ -164,7 +164,7 @@ export const loadAdmin = () => (dispatch, getState) => {
   }
 
   axios
-    .get("/api/admin/auth/load", config)
+    .get(`${apiUrl}/api/admin/auth/load`, config)
     .then((res) =>
       dispatch({
         type: ADMIN_LOADED,
@@ -203,7 +203,7 @@ export const paymentApprove =
     const body = { memberid, requestid, amount, paymentaction };
 
     axios
-      .post("/api/admin/payment", body, config)
+      .post(`${apiUrl}/api/admin/payment`, body, config)
       .then((res) => {
         dispatch({
           type: PAYMENT_APPROVED,
@@ -238,7 +238,7 @@ export const loadTransaction = () => (dispatch, getState) => {
   }
 
   axios
-    .get("/api/admin/loadtransaction", config)
+    .get(`${apiUrl}/api/admin/loadtransaction`, config)
     .then((res) =>
       dispatch({
         type: LOAD_PENDING_TRANSACTION,
