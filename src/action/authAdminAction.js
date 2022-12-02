@@ -21,7 +21,7 @@ import {
 // require> email password
 // return  > error or success
 //route /auth
-const apiUrl = "http://localhost:4444"
+const apiUrl = "https://api-moneyhouse.onrender.com"
 export const adminLogin = (body) => (dispatch) => {
   dispatch({
     type: ADMIN_LOADING,

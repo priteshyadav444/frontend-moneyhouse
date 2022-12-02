@@ -24,7 +24,7 @@ import { returnErrors } from "./errorAction";
 //func > getHOUSE
 //desc > get all HOUSE
 //roure > /HOUSE
-const apiUrl = "http://localhost:4444"
+const apiUrl = "https://api-moneyhouse.onrender.com"
 export const getHouse = (data) => (dispatch, getState) => {
   dispatch(setHouseLoading());
   var id = null;
