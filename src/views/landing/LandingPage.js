@@ -8,7 +8,7 @@ import { Hidden } from "@material-ui/core";
 export default function LandingPage() {
   return (
     <>
-      <Page title="Welcome to  Moneyhouse.com">
+      <Page title="Moneyhouse.org.in - Investment Platform">
         <div>
           {/* ======= Header ======= */}
           <header id="header" className="fixed-top">
@@ -47,7 +47,7 @@ export default function LandingPage() {
           <section id="hero" className="d-flex align-items-center">
             <div className="container" data-aos="zoom-out" data-aos-delay={100}>
               <h1>
-                Welcome to <span>MoneyHouse</span>
+                Welcome to <span>MoneyHouse</span>  - (Final Year College Project)
               </h1>
               <h2>Making your investment easy .</h2>
               <div className="d-flex">
